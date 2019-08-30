@@ -3,4 +3,5 @@ node_modules
 .env
 schema.sql
 seeds.sql
+README.md
 

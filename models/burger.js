@@ -7,16 +7,15 @@ let burger = {
         });
     },
     insertOne: function(valueInput, callback) {
-        orm.insertOne("burgers", "burger_name", valueInput, function(results) {
-            callback(results);
+        orm.insertOne("burgers", "burger_name", valueInput, function(result) {
+            callback(result);
         });
     },
     updateOne: function(idInput, callback) {
-        orm.updateOne("burgers", idInput, function(results) {
-            callback(results);
+        orm.updateOne("burgers", idInput, function(result) {
+            callback(result);
         });
     }
-
 
 };
 

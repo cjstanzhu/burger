@@ -2,59 +2,34 @@ let connection = require("./connection.js");
 
 let orm = {
     selectAll: function(tableInput, callback) {
-        let queryString = `SELECT * FROM ${tableInput};`;
+        let queryString = `SELECT * FROM ??`;
 
-        connection.query(queryString, function(error, results) {
+        connection.query(queryString, [tableInput], function(error, results) {
             if (error) throw error;
             
             callback(results);
         });
     },
     insertOne: function(tableInput, columnInput, valueInput, callback) {
-        let queryString = `INSERT INTO ${tableInput} (${columnInput}) VALUES ("${valueInput}")`;
+        // let queryString = `INSERT INTO ${tableInput} (${columnInput}) VALUES ("${valueInput}")`;
+        let queryString = `INSERT INTO ?? (??) VALUES (?)`;
     
-        // queryString += " (";
-        // queryString += cols.toString();
-        // queryString += ") ";
-        // queryString += "VALUES (";
-        // queryString += printQuestionMarks(vals.length);
-        // queryString += ") ";
-
-        // console.log(queryString);
-    
-        connection.query(queryString, function(error, results) {
+        connection.query(queryString, [tableInput, columnInput, valueInput], function(error, result) {
             if (error) throw err;
             
             callback(result);
         });
     },
     updateOne: function(tableInput, idInput, callback) {
-        var queryString = `UPDATE ${tableInput} SET devoured = true WHERE id = ${idInput}`; //optional WHERE burger_name = x
+        // let queryString = `UPDATE ${tableInput} SET devoured = true WHERE id = ${idInput}`; //optional WHERE burger_name = x
+        let queryString = `UPDATE ?? SET devoured = true WHERE id = ?`;
 
-        // UPDATE people
-        // SET has_pet = true, pet_name = "Franklin", pet_age = 2
-        // WHERE id = 4;
-        // -- WHERE name = "Peter";
-    
-        // queryString += " SET ";
-        // queryString += objToSql(objColVals);
-        // queryString += " WHERE ";
-        // queryString += condition;
-    
-        // console.log(queryString);
-
-        connection.query(queryString, function(error, results) {
+        connection.query(queryString, [tableInput, idInput], function(error, result) {
             if (error) throw err;
             
             callback(result);
         });
       }
-
-
-
-
-
-
 
 };
 
